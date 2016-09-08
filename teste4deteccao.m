@@ -1,3 +1,6 @@
+clear all;
+close all;
+clc
 % Create the face detector object.
 faceDetector = vision.CascadeObjectDetector();
 
