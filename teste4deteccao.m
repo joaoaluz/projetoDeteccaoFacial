@@ -87,7 +87,7 @@ while runLoop && frameCount < 2000
             videoFrame = insertShape(videoFrame, 'Polygon', bboxPolygon, 'LineWidth', 3);
 
             % Display tracked points.
-            videoFrame = insertMarker(videoFrame, visiblePoints, '+', 'Color', 'white');
+        
 
             % Reset the points.
             oldPoints = visiblePoints;
