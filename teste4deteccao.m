@@ -19,26 +19,26 @@ videoPlayer = vision.VideoPlayer('Position', [100 100 [frameSize(2), frameSize(1
 
 runLoop = true;
 numPts = 0;
-frameCount = 0;
 
-while runLoop && frameCount < 2000
+
+while runLoop 
 
     % Get the next frame.
     videoFrame = snapshot(cam);
     videoFrameGray = rgb2gray(videoFrame);
-    frameCount = frameCount + 1;
+   
 
     if numPts < 10
         % Detection mode.
         bbox = faceDetector.step(videoFrameGray);
 
-        if ~isempty(bbox)
+        if ~isempty(bbox)%If the face is not in upright position. 
             % Find corner points inside the detected region.
             points = detectMinEigenFeatures(videoFrameGray, 'ROI', bbox(1, :));
 
             % Re-initialize the point tracker.
             xyPoints = points.Location;
-            numPts = size(xyPoints,1);
+            numPts = size(xyPoints);
             release(pointTracker);
             initialize(pointTracker, xyPoints, videoFrameGray);
 
@@ -58,8 +58,7 @@ while runLoop && frameCount < 2000
             % Display a bounding box around the detected face.
             videoFrame = insertShape(videoFrame, 'Polygon', bboxPolygon, 'LineWidth', 3);
 
-            % Display detected corners.
-            videoFrame = insertMarker(videoFrame, xyPoints, '+', 'Color', 'white');
+          
         end
 
     else
