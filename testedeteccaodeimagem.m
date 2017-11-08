@@ -12,9 +12,11 @@ BB = step(FDetect,I);
 
 figure,
 imshow(I); hold on
+
+
 for i = 1:size(BB,1)
     rectangle('Position',BB(i,:),'LineWidth',5,'LineStyle','-','EdgeColor','r');
 end
-title('Detecção facial');
+title('DetecÃ§Ã£o facial');
 hold off;
 
